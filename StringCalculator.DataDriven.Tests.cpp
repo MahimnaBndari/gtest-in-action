@@ -16,7 +16,7 @@ TestDataPair(string_input,int_expectedValue):input{_input},expectedValue{_expect
 
 TEST(StringCalculatorDataDrivenTestSuite,DataDrivenTestCase){
  vector<TestDataPair> dataList;
-  TestPair pair_one {"",0};
+  TestDataPair pair_one {"",0};
    TestDataPair pair_one {"0",0};
    TestDataPair pair_one {"1",1};
    TestDataPair pair_one {"1,2",3};
