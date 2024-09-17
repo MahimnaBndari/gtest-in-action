@@ -99,3 +99,15 @@ TEST(StringCalculatorTestSuite, add_negativeNumbers_ThrowsException) {
     // Act & Assert
     ASSERT_THROW(Add(input), std::invalid_argument);
 }
+// Test for numbers over 1000 (ignores them)
+TEST(StringCalculatorTestSuite, add_numbersOver1000_Ignored) {
+    // Arrange
+    std::string input = "1001,2";
+    int expectedValue = 2;
+
+    // Act
+    int actualValue = Add(input);
+
+    // Assert
+    ASSERT_EQ(actualValue, expectedValue);
+}
