@@ -55,4 +55,15 @@ int actualValue=Add(input);
 ASSERT_EQ(actualValue,expectedValue);
 
 }
- 
+ // Test for multiple comma-delimited numbers
+TEST(StringCalculatorTestSuite, add_multipleCommaDelimitedNumbers_SumIsExpected) {
+    // Arrange
+    std::string input = "1,2,3,4";
+    int expectedValue = 10;
+
+    // Act
+    int actualValue = Add(input);
+
+    // Assert
+    ASSERT_EQ(actualValue, expectedValue);
+}
