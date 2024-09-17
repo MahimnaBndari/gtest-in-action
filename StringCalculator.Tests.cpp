@@ -79,3 +79,15 @@ TEST(StringCalculatorTestSuite, add_newlineAndCommaDelimitedNumbers_SumIsExpecte
     // Assert
     ASSERT_EQ(actualValue, expectedValue);
 }
+// Test for custom single-character delimiter
+TEST(StringCalculatorTestSuite, add_customSingleCharacterDelimiter_SumIsExpected) {
+    // Arrange
+    std::string input = "//;\n1;2";
+    int expectedValue = 3;
+
+    // Act
+    int actualValue = Add(input);
+
+    // Assert
+    ASSERT_EQ(actualValue, expectedValue);
+}
