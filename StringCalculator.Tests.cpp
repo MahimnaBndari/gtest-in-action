@@ -91,3 +91,11 @@ TEST(StringCalculatorTestSuite, add_customSingleCharacterDelimiter_SumIsExpected
     // Assert
     ASSERT_EQ(actualValue, expectedValue);
 }
+// Test for negative numbers (throws exception)
+TEST(StringCalculatorTestSuite, add_negativeNumbers_ThrowsException) {
+    // Arrange
+    std::string input = "1,-2,3";
+
+    // Act & Assert
+    ASSERT_THROW(Add(input), std::invalid_argument);
+}
