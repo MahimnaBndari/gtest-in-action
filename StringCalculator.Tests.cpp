@@ -123,3 +123,15 @@ TEST(StringCalculatorTestSuite, add_multicharacterDelimiter_SumIsExpected) {
     // Assert
     ASSERT_EQ(actualValue, expectedValue);
 }
+// Test for multiple delimiters
+TEST(StringCalculatorTestSuite, add_multipleDelimiters_SumIsExpected) {
+    // Arrange
+    std::string input = "//[;][***]\n1;2***3";
+    int expectedValue = 6;
+
+    // Act
+    int actualValue = Add(input);
+
+    // Assert
+    ASSERT_EQ(actualValue, expectedValue);
+}
