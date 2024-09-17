@@ -13,7 +13,7 @@ TEST_F(StringCalculatorTestSuite,add_emptyInputString_ZeroIsExpected){
 
 //Arrange
 
-input="";
+input="4";
 
 expectedValue=0;
 
