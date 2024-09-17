@@ -9,11 +9,11 @@ int expectedValue;
 int actualValue;
 };
 
-TEST_F(StringCalculatorTestSuite,add_emptyInputString_ZeroIsExpected){
+TEST_F(StringCalculatorFixture,add_emptyInputString_ZeroIsExpected){
 
 //Arrange
 
-input="4";
+input="";
 
 expectedValue=0;
 
