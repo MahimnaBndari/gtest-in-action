@@ -67,3 +67,15 @@ TEST(StringCalculatorTestSuite, add_multipleCommaDelimitedNumbers_SumIsExpected)
     // Assert
     ASSERT_EQ(actualValue, expectedValue);
 }
+// Test for newline and comma delimiters
+TEST(StringCalculatorTestSuite, add_newlineAndCommaDelimitedNumbers_SumIsExpected) {
+    // Arrange
+    std::string input = "1\n2,3";
+    int expectedValue = 6;
+
+    // Act
+    int actualValue = Add(input);
+
+    // Assert
+    ASSERT_EQ(actualValue, expectedValue);
+}
