@@ -19,7 +19,7 @@ add_compile_options("--coverage")
 add_executable(
   cleancode
   StringCaluclator.cpp
-  StringCaluclator.Tests.cpp
+  StringCaluclator.Tests.suits
  )
 target_link_libraries(
   cleancode
