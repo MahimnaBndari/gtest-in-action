@@ -27,14 +27,14 @@ void SetUp(){
 void TearDown(){
 };
 
-TEST_F(StringCalculatorDataDrivenFixture,DataDrivenTestCase){
+TEST_F(StringCalculatorDataDrivenFixture, DataDrivenTestCase){
    for (TestDataPair* dataPairPtr : dataList) {
         int actualValue=Add(dataPairPtr->input);
         ASSERT_EQ(actualValue,dataPairPtr->expectedValue);
 
         
 }
-TEST(StringCalculatorDataDrivenTestSuite,DataDrivenTestCase){
+TEST(StringCalculatorDataDrivenTestSuite, DataDrivenTestCase){
   vector<TestDataPair> dataList;
   TestDataPair pair_one { "",0};
   TestDataPair pair_two { "0",0};
