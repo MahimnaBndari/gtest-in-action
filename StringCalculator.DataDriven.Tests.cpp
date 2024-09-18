@@ -1,58 +1,29 @@
 #include "StringCalculator.h"
 #include <gtest/gtest.h>
-#include <vector>
+#include <tuple>
 
-class TestDataPair{
-public:
+class StringCalculatorFixture:public testing::Test{
+protected:
     string input;
     int expectedValue;
-    TestDataPair(string _input,int _expectedValue) : input{_input}, expectedValue{_expectedValue}{
-      }
+    int actualValue;
 };
+class StringCalculatorParameterFixture:public StringCalculatorFixture, public testing::WithParamInterface<tuple<string,int>>{
 
-class StringCalculatorDataDrivenFixture:public testing::Test{
-
-protected:
-  vector<TestDataPair*> dataList;
-
-   //Before Each Test Case
-  void SetUp(){
-      dataList.push_back(new TestDataPair { "",0});
-      dataList.push_back(new TestDataPair { "0",0});
-      dataList.push_back(new TestDataPair { "1",1});
-      dataList.push_back(new TestDataPair { "1,2",3});
-      dataList.push_back(new TestDataPair { "1,2,3",6});
-  }
-  // After Each Test Case
-void TearDown(){
-    
-    
 };
-
-TEST_F(StringCalculatorDataDrivenFixture,DataDrivenTestCase){
-     for (TestDataPair* dataPairPtr : dataList) {
-        int actualValue=Add(dataPairPtr->input);
-        ASSERT_EQ(actualValue,dataPairPtr->expectedValue);
-    }
-}
-TEST(StringCalculatorDataDrivenTestSuite,DataDrivenTestCase){
-
-  TestDataPair pair_one { "",0};
-  TestDataPair pair_two { "0",0};
-  TestDataPair pair_three { "1",1};
-  TestDataPair pair_four { "1,2",3};
-  TestDataPair pair_five { "1,2,3",6};
-
-  dataList.push_back(pair_one);
-  dataList.push_back(pair_two);
-  dataList.push_back(pair_three);
-  dataList.push_back(pair_four);
-  dataList.push_back(pair_five);
+//Parameter Values
+INSTANTIATE_TEST_SUITE_P(ValidStringCalculatorInputs,StringCalculatorParameterFixture,testing::Values(
+  make_tuple("", 0),
+  make_tuple("0", 0),
+  make_tuple("1", 1),
+  make_tuple("1,2", 3),
+  make_tuple("1,2,3", 6)
   
-  //Iterate using a range-based for-loop
-    for (TestDataPair dataPair : dataList) {
-        int actualValue=Add(dataPair.input);
-        ASSERT_EQ(actualValue,dataPair.expectedValue);
-    }
+));
 
+TEST_P(StringCalculatorParameterFixture,ParameterizedTest){
+      input= std::get<0>(GetParam());
+      expectedValue= std::get<1>(GetParam());
+      actualValue=Add(input);
+      ASSERT_EQ(actualValue,expectedValue);
 }
