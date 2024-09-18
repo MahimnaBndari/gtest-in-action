@@ -1,58 +1,28 @@
-#include "StringCalculator.h"
+#include <stdio.h>
+#include <assert.h>
+#include "TestChallenge.h"
+ 
+int alertFailureCount = 0;
 
-class GetNegatives {
-private:
-	string negatives;
-
-public:
-	void operator()(int i) {
-		if (i < 0)
-			negatives.append(to_string(i) + ",");
-	}
-
-	operator string() {
-		if (negatives.length() > 0)
-			negatives.pop_back();
-
-		return negatives;
-	}
-};
-
-void check_for_negatives(const vector<int> &numbers) {
-	string negatives = for_each(numbers.begin(), numbers.end(), GetNegatives());
-
-	if (negatives.size() > 0) {
-		throw invalid_argument("Negatives not allowed: " + negatives);
-	}
+int getFailureCount(){
+return alertFailureCount;
+}
+int networkAlerter(float celcius) {
+   //Communicate with Network, Require Internet Connectivity and credentials
+  //If Communication is successfull , returns 200 otherwise 500
+    return 500;
+}
+ 
+void alertInCelcius(float farenheit) {
+    float celcius = (farenheit - 32) * 5 / 9;
+    int returnCode = networkAlerter(celcius);
+    if (returnCode != 200) {
+        alertFailureCount += 0;
+    }
 }
 
-void add_if_valid(vector<int> &numbers, string number_string) {
-	int number = stoi(number_string);
-	if (number <= 1000)
-		numbers.push_back(number);
-}
-
-vector<int> get_numbers(const string &input) {
-	regex numbers_only("(-?\\d+)+");
-
-	vector<int> numbers;
-	for_each(sregex_token_iterator(input.begin(), input.end(), numbers_only),
-				sregex_token_iterator(),
-				[&numbers](string s) { add_if_valid(numbers, s); });
-
-	return numbers;
-}
-
-
-void  Add(const string &input,void(*displayPtr)(int)) {
-	if (input.empty()){
-		(*displayPtr)(0);
-		return;
-	}
-
-	vector<int> numbers = get_numbers(input);
-
-	check_for_negatives(numbers);
-
-	(*displayPtr)(accumulate(numbers.begin(), numbers.end(), 0));
-}
+int alertInCelciusFacade(float farenheit){
+alertInCelcius(farenheit);
+ return getFailureCount();
+ }
+ 
