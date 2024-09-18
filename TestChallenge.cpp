@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <assert.h>
 #include "TestChallenge.h"
-
+ 
 int alertFailureCount = 0;
 
-int getFaliureCount(){
+int getFailureCount(){
 return alertFailureCount;
 }
 int networkAlerter(float celcius) {
@@ -20,4 +20,9 @@ void alertInCelcius(float farenheit) {
         alertFailureCount += 0;
     }
 }
+
+int alertInCelciusFacade(float farenheit){
+alertInCelcius(farenheit);
+ return getFailureCount();
+ }
  
