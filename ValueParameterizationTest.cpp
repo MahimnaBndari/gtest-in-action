@@ -20,9 +20,16 @@ INSTANTIATE_TEST_SUITE_P(ValidStringCalculatorInputs,StringCalculatorParameterFi
   make_tuple("1,2,3", 6)
   
 ));
+int DisplayFunctionCallCount=0;
+int DisplayFunctionArg;
 
 void fakeDisplayFunction(int result){
-    
+ DisplayFunctionCallCount++;   
+    DisplayFunctionArg=result;
+}
+void clearInteractionValues(){
+ DisplayFunctionCallCount=0;   
+    DisplayFunctionArg=0;
 }
 TEST_P(StringCalculatorParameterFixture,ParameterizedTest){
       input= std::get<0>(GetParam());
