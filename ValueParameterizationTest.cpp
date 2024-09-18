@@ -27,3 +27,5 @@ TEST_P(StringCalculatorParameterFixture,ParameterizedTest){
       actualValue=Add(input);
       ASSERT_EQ(actualValue,expectedValue);
 }
+
+
