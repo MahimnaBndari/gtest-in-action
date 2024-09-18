@@ -32,7 +32,7 @@ TEST_F(StringCalculatorDataDrivenFixture, DataDrivenTestCase){
         int actualValue=Add(dataPairPtr->input);
         ASSERT_EQ(actualValue,dataPairPtr->expectedValue);
 
-        
+   }      
 }
 TEST(StringCalculatorDataDrivenTestSuite, DataDrivenTestCase){
   vector<TestDataPair> dataList;
